@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/setting_about_nav"
+    app:startDestination="@id/settingPageFragment">
+    <fragment
+        android:id="@+id/settingPageFragment"
+        android:name="com.example.myapplication.ui.settings.settingPageFragment"
+        android:label="fragment_setting_page"
+        tools:layout="@layout/fragment_setting_page" >
+        <action
+            android:id="@+id/action_settingPageFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment2"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_settingPageFragment_to_editInfoFragment"
+            app:destination="@id/editInfoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <argument
+            android:name="user_name"
+            app:argType="string"
+            android:defaultValue="User_111" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment2"
+        android:name="com.example.myapplication.ui.settings.aboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_aboutFragment2_to_settingPageFragment"
+            app:destination="@id/settingPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editInfoFragment"
+        android:name="com.example.myapplication.ui.settings.editInfoFragment"
+        android:label="fragment_edit_info"
+        tools:layout="@layout/fragment_edit_info" >
+        <action
+            android:id="@+id/action_editInfoFragment_to_settingPageFragment"
+            app:destination="@id/settingPageFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <argument
+            android:name="user_name"
+            app:argType="string"
+            android:defaultValue="User_111" />
+    </fragment>
+</navigation>

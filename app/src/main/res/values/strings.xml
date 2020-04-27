@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Dr.HoneeB</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="kindsOfBees">Search by kinds of Bees:</string>
+    <string name="button_search">Search</string>
+    <string name="kindsOfFloral">Search by kinds of floral species:</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="userName">User_111</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="application_name">Dr.HoneeB</string>
+    <string name="verson_number">Verson:1.0</string>
+    <string name="description">Dr.HooeeB is an app That will easily identify the health condition of your bees with your mobile phone. It also can help you search the location of different kinds of bees and floral species.</string>
+    <string name="contact">Contanct Information:</string>
+    <string name="email">Email:</string>
+    <string name="health_condition">Health Condition: </string>
+    <string name="healthy">Healthy</string>
+    <string name="descriptions">Description: </string>
+    <string name="your_bee_health_is_obsolutely_fine">Your bee health is obsolutely fine.</string>
+    <string name="bee_species">Bee Species: </string>
+    <string name="species">Western Honey Bee</string>
+    <string name="get_health_for_another_bee">Get Health For Another Bee</string>
+    <string name="how_to_upload_a_right_photo">How to upload a right photo?</string>
+    <string name="one_clear_bee_in_a_photo">One clear bee in a photo.</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="no_multiple_bee_in_a_photo">No multiple bee in a photo.</string>
+    <string name="instantly_identify_your_bee_health">Instantly identify your bee health</string>
+    <string name="dr_honeeb">Dr. HoneeB</string>
+    <string name="take_a_photo">Take A Photo</string>
+    <string name="input_user_name">Please Input User Name:</string>
+    <string name="input_user_email">Please Input Email Address:</string>
+</resources>

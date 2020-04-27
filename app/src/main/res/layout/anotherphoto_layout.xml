@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/anotherPicture"
+        android:layout_width="380dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/bee"/>
+
+
+    <Button
+        android:id="@+id/button_takeAnotherPic"
+        android:layout_width="180dp"
+        android:background="@drawable/corners"
+        android:layout_gravity="center"
+        android:layout_marginTop="125dp"
+        android:layout_height="wrap_content"
+        android:text="Take Another Photo" />
+
+    <Button
+        android:id="@+id/button_beeHealth"
+        android:layout_width="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners"
+        android:text="Get Bee Health" />
+</LinearLayout>
+
+
+

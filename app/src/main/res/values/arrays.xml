@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="kindsOfBess">
+        <item>Italian bees</item>
+        <item>Carniolan bees</item>
+        <item>Caucasian honey bees</item>
+        <item>Asian bees</item>
+    </string-array>
+
+
+    <string-array name="kindsOfFloral">
+        <item>Banksia</item>
+        <item>Dianella</item>
+        <item>Themeda</item>
+        <item>Grass</item>
+    </string-array>
+</resources>
