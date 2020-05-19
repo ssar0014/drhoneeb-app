@@ -1,5 +1,7 @@
 **MyApplication** – It is an android project for team Dr.HoneeB (E16) which uses Java.
 
+**Use Pixel 3XL - API 22 as AVD Manager in Android Studio**
+
 The main Classes in this project are:
 - `MainActivity` – It is the main activity of the project which controls the bottom navigation drawer.
 - `cameraFragment` – This class is a fragment in bottom navigation drawer and is used to open camera and gallery for user to upload a photo.
