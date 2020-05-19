@@ -1,0 +1,54 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-gorthi-gorthi-03022-authRole",
+			"UnauthRoleArn": "arn:aws:iam::411712900667:role/amplify-gorthi-gorthi-03022-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::411712900667:role/amplify-gorthi-gorthi-03022-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "amplify-gorthi-gorthi-03022-deployment",
+			"UnauthRoleName": "amplify-gorthi-gorthi-03022-unauthRole",
+			"StackName": "amplify-gorthi-gorthi-03022",
+			"StackId": "arn:aws:cloudformation:us-east-1:411712900667:stack/amplify-gorthi-gorthi-03022/cb2dc050-9781-11ea-a345-0a0207fddeaf",
+			"AmplifyAppId": "d15l71zulsyvb0"
+		}
+	},
+	"auth": {
+		"gorthi3381c1d6": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-gorthi-gorthi-03022-deployment/amplify-cfn-templates/auth/gorthi3381c1d6-cloudformation-template.yml",
+				"logicalId": "authgorthi3381c1d6"
+			},
+			"lastPushTimeStamp": "2020-05-16T14:48:21.511Z",
+			"output": {
+				"AppClientSecret": "tnkr1rapeo0vbv3m4gleh1k27dgpqp4epm24jp825tl4btingfa",
+				"UserPoolId": "us-east-1_D0vAHst8E",
+				"AppClientIDWeb": "51udbb3e17ol9299htpcctm1eh",
+				"AppClientID": "36l1p86iab7rro0m1ca1kdmo7",
+				"IdentityPoolId": "us-east-1:9ff3dd2d-9b7a-4921-a9af-28e56524e930",
+				"IdentityPoolName": "gorthi3381c1d6_identitypool_3381c1d6__gorthi",
+				"UserPoolName": "gorthi3381c1d6_userpool_3381c1d6"
+			},
+			"lastPushDirHash": "hz1iIMBmrz2hPt07HS+9FyxhHBU="
+		}
+	},
+	"storage": {
+		"honeeb": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-gorthi-gorthi-03022-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"logicalId": "storagehoneeb"
+			},
+			"lastPushTimeStamp": "2020-05-16T14:48:21.511Z",
+			"output": {
+				"BucketName": "e16-drhoneeb-s303022-gorthi",
+				"Region": "us-east-1"
+			},
+			"lastPushDirHash": "57ghuKaw8mE5+uFB7XBWTrNCLAQ="
+		}
+	}
+}

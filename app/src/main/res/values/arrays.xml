@@ -9,9 +9,9 @@
 
 
     <string-array name="kindsOfFloral">
-        <item>Banksia</item>
-        <item>Dianella</item>
-        <item>Themeda</item>
-        <item>Grass</item>
+        <item>Allocasuarina verticillata</item>
+        <item>Brachychiton populneus subsp</item>
+        <item>Brachychiton populneus</item>
+        <item>Callitris endlicheri</item>
     </string-array>
 </resources>

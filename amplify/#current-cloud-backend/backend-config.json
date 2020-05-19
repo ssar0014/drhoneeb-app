@@ -1,0 +1,16 @@
+{
+	"auth": {
+		"gorthi3381c1d6": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	},
+	"storage": {
+		"honeeb": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

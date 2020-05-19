@@ -49,14 +49,21 @@ public class editInfoFragment extends Fragment {
                 EditText editText = getView().findViewById(R.id.editText_userName);
                 String string = editText.getText().toString();
                 if (TextUtils.isEmpty(string)) {
-                    Toast.makeText(getActivity(),"Please Input user Name!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Please Input User Name!",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("user_name",string);
-
                 NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.action_editInfoFragment_to_settingPageFragment,bundle);
+            }
+        });
+
+        getView().findViewById(R.id.button_edit_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_editInfoFragment_to_settingPageFragment);
             }
         });
     }

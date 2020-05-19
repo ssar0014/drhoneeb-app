@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.camera;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
@@ -49,6 +50,7 @@ public class cameraFragment extends Fragment {
     private final int CAMERA = 2;
     private static final String IMAGE_DIRECTORY = "/image";
     byte[] sample = null;
+    private Uri imageUri;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -137,6 +139,13 @@ public class cameraFragment extends Fragment {
         Intent askUserToTakeAnotherPicIntent = new Intent(getContext(), TakeAnotherPicOrGetHealth.class);
         startActivity(askUserToTakeAnotherPicIntent);
         
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
     //Saving image in gallery.

@@ -29,7 +29,7 @@
         android:textAlignment="textStart"
         tools:ignore="RtlCompat" />
     <TextView
-        android:id="@+id/editText_description"
+        android:id="@+id/text_problem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"

@@ -1,0 +1,20 @@
+{
+    "gorthi": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-gorthi-gorthi-03022-authRole",
+            "UnauthRoleArn": "arn:aws:iam::411712900667:role/amplify-gorthi-gorthi-03022-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::411712900667:role/amplify-gorthi-gorthi-03022-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-gorthi-gorthi-03022-deployment",
+            "UnauthRoleName": "amplify-gorthi-gorthi-03022-unauthRole",
+            "StackName": "amplify-gorthi-gorthi-03022",
+            "StackId": "arn:aws:cloudformation:us-east-1:411712900667:stack/amplify-gorthi-gorthi-03022/cb2dc050-9781-11ea-a345-0a0207fddeaf",
+            "AmplifyAppId": "d15l71zulsyvb0"
+        },
+        "categories": {
+            "auth": {
+                "gorthi3381c1d6": {}
+            }
+        }
+    }
+}

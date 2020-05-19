@@ -17,16 +17,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="application_name">Dr.HoneeB</string>
-    <string name="verson_number">Verson:1.0</string>
+    <string name="verson_number">Verson:1.1</string>
     <string name="description">Dr.HooeeB is an app That will easily identify the health condition of your bees with your mobile phone. It also can help you search the location of different kinds of bees and floral species.</string>
     <string name="contact">Contanct Information:</string>
-    <string name="email">Email:</string>
+    <string name="email">Email: yhou0011@student.monash.edu</string>
     <string name="health_condition">Health Condition: </string>
-    <string name="healthy">Healthy</string>
+    <string name="healthy">&#32;Unhealthy &#32;</string>
     <string name="descriptions">Description: </string>
-    <string name="your_bee_health_is_obsolutely_fine">Your bee health is obsolutely fine.</string>
+    <string name="your_bee_health_is_obsolutely_fine">Queen bee is missing in the hive.</string>
     <string name="bee_species">Bee Species: </string>
-    <string name="species">Western Honey Bee</string>
+    <string name="species">&#32;Italian Bee</string>
     <string name="get_health_for_another_bee">Get Health For Another Bee</string>
     <string name="how_to_upload_a_right_photo">How to upload a right photo?</string>
     <string name="one_clear_bee_in_a_photo">One clear bee in a photo.</string>
@@ -36,5 +36,6 @@
     <string name="dr_honeeb">Dr. HoneeB</string>
     <string name="take_a_photo">Take A Photo</string>
     <string name="input_user_name">Please Input User Name:</string>
-    <string name="input_user_email">Please Input Email Address:</string>
+    <string name="input_user_email">Please Input Email:</string>
+    <string name="text_phone">Phone: +61452225155</string>
 </resources>

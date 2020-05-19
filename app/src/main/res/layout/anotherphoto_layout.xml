@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,29 +11,43 @@
         android:id="@+id/anotherPicture"
         android:layout_width="380dp"
         android:layout_height="350dp"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/bee"/>
-
+        android:src="@drawable/bee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041" />
 
     <Button
         android:id="@+id/button_takeAnotherPic"
         android:layout_width="180dp"
-        android:background="@drawable/corners"
-        android:layout_gravity="center"
-        android:layout_marginTop="125dp"
         android:layout_height="wrap_content"
-        android:text="Take Another Photo" />
+        android:layout_gravity="center"
+        android:background="@drawable/corners"
+        android:text="Take Another Photo"
+        app:layout_constraintBottom_toTopOf="@+id/button_beeHealth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/anotherPicture"
+        app:layout_constraintVertical_bias="0.772" />
 
     <Button
         android:id="@+id/button_beeHealth"
         android:layout_width="180dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="168dp"
         android:background="@drawable/corners"
-        android:text="Get Bee Health" />
-</LinearLayout>
+        android:text="Get Bee Health"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

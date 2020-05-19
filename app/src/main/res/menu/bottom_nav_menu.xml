@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_explore"
-        android:icon="@drawable/baseline_explore_black_24dp"
-        android:title="Explore" />
-
-    <item
         android:id="@+id/navigation_help"
         android:icon="@drawable/baseline_help_black_24dp"
         android:title="Help" />

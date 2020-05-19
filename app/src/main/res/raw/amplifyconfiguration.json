@@ -1,0 +1,13 @@
+{
+    "UserAgent": "aws-amplify-cli/2.0",
+    "Version": "1.0",
+    "storage": {
+        "plugins": {
+            "awsS3StoragePlugin": {
+                "bucket": "e16-drhoneeb-s303022-gorthi",
+                "region": "us-east-1",
+                "defaultAccessLevel": "guest"
+            }
+        }
+    }
+}
