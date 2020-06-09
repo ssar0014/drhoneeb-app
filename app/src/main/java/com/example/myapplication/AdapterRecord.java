@@ -57,7 +57,7 @@ public class AdapterRecord extends RecyclerView.Adapter<AdapterRecord.HolderReco
 
         if (image.equals("null")) {
             //no image in record
-            holder.beeIv.setImageResource(R.drawable.bee);
+            holder.beeIv.setImageResource(R.drawable.beetest);
         }
         else {
             //have image in record

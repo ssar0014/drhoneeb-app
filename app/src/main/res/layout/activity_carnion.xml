@@ -17,20 +17,21 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="365dp"
-            android:layout_height="270dp"
+            android:layout_width="328dp"
+            android:layout_height="236dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.166"
+            app:layout_constraintVertical_bias="0.276"
             app:srcCompat="@drawable/c_bee" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Carniolan honey bee"
+            android:text="Carniolan Honey Bee"
             android:textColor="#252222"
             android:textSize="16sp"
             android:textStyle="italic"
@@ -89,7 +90,8 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
-                    android:text="The Carniolan honey bee (Apis mellifera carnica, Pollmann) is a subspecies of the western honey bee. The Carniolan honey bee is native to Slovenia, southern Austria, and parts of Croatia, Bosnia and Herzegovina, Serbia, Hungary, Romania, and Bulgaria." />
+                    android:text="The Carniolan honey bee (Apis mellifera carnica, Pollmann) is a subspecies of the western honey bee. The Carniolan honey bee is native to Slovenia, southern Austria, and parts of Croatia, Bosnia and Herzegovina, Serbia, Hungary, Romania, and Bulgaria."
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -112,7 +114,8 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
-                    android:text='Carniolan honey bees are about the same size as the Italian honey bee, but they are physically distinguished by their generally dusky brown-grey color that is relieved by stripes of a subdued lighter brown color. Their chitin is dark, but it is possible to find lighter colored or brown colored rings and dots on their bodies. They are also known as the "grey bee".' />
+                    android:text='Carniolan honey bees are about the same size as the Italian honey bee, but they are physically distinguished by their generally dusky brown-grey color that is relieved by stripes of a subdued lighter brown color. Their chitin is dark, but it is possible to find lighter colored or brown colored rings and dots on their bodies. They are also known as the "grey bee".'
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -136,7 +139,8 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
-                    android:text="PROS – These bees are desirablefor keeping a moderate strength colony. They shrink to small populations over winter and build again very quickly in spring. Also considered to be gentle, they are good in highly populated areas. They quickly adapt to changes in the environment. Their sense of orientation is better than the Italian honey bee. Able to overwinter in smaller numbers, their honey stores are better conserved. Their low use of propolis also makes hive management easier. They are also resistant to brood diseases. Overwinter exceptionally well Decent yield also in poor years Good spare time beekeeping Needs very moderate food supplies" />
+                    android:text="PROS – These bees are desirablefor keeping a moderate strength colony. They shrink to small populations over winter and build again very quickly in spring. Also considered to be gentle, they are good in highly populated areas. They quickly adapt to changes in the environment. Their sense of orientation is better than the Italian honey bee. Able to overwinter in smaller numbers, their honey stores are better conserved. Their low use of propolis also makes hive management easier. They are also resistant to brood diseases. Overwinter exceptionally well Decent yield also in poor years Good spare time beekeeping Needs very moderate food supplies"
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -145,7 +149,8 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
-                    android:text="CONS – These bees are more prone to swarming if overcrowded and they have a low ability to thrive in hot summer weather. Also, the strength of the brood nest is more dependent on the availability of pollen. Slow Spring build-up" />
+                    android:text="CONS – These bees are more prone to swarming if overcrowded and they have a low ability to thrive in hot summer weather. Also, the strength of the brood nest is more dependent on the availability of pollen. Slow Spring build-up"
+                    android:textColor="@color/colorBlack" />
 
 
             </LinearLayout>

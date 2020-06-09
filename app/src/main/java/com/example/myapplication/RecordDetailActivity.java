@@ -6,11 +6,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
@@ -22,12 +25,6 @@ public class RecordDetailActivity extends AppCompatActivity {
 
     private CircularImageView profileIv;
     private TextView speciesTv, health_conditionTv, desctiptionTv, addedTimeTv, updatedTimeTv;
-
-
-
-    private ActionBar actionBar;
-
-
     //db helper
     MyDbHelper dbHelper;
 
@@ -39,11 +36,6 @@ public class RecordDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_detail);
 
-
-        actionBar = getSupportActionBar();
-        actionBar.setTitle("Records Details");
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //get reocrd id from adapter throught intent
 
@@ -58,7 +50,6 @@ public class RecordDetailActivity extends AppCompatActivity {
         desctiptionTv = findViewById(R.id.descriptionTv);
         addedTimeTv = findViewById(R.id.addedTimeTv);
         updatedTimeTv = findViewById(R.id.updatedTimeTv);
-
         showRecordDetails();
 
     }
@@ -101,7 +92,7 @@ public class RecordDetailActivity extends AppCompatActivity {
                 updatedTimeTv.setText(timeUpdated);
                 if (image.equals("null")) {
                     //no image in record
-                    profileIv.setImageResource(R.drawable.bee);
+                    profileIv.setImageResource(R.drawable.beetest);
                 }
                 else {
                     //have image in record

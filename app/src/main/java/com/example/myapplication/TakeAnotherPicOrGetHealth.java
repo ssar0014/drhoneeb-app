@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,6 +24,8 @@ import android.graphics.BitmapFactory;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -32,7 +35,10 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 
 import com.amplifyframework.core.Amplify;
@@ -47,16 +53,29 @@ import org.json.JSONObject;
 public class TakeAnotherPicOrGetHealth extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 100;
+    boolean flag = false;
     Button beeHealth;
     Button gotoCamera;
     ImageView bee;
+    Bitmap bm;
+    byte[] sample = null;
     private final int cameraRequest = 1;
     private int selectFile;
     private final int GALLERY = 1;
     private final int CAMERA = 2;
+
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int STORAGE_REQUEST_CODE = 101;
+
+    private static final int IMAGE_PICK_CAMERA_CODE = 102;
+    private static final int IMAGE_PICK_GALLERY_CODE = 103;
+
+    private String[] cameraPermission;
+    private String[] storagePermissions;
+
     private static final String IMAGE_DIRECTORY = "/image";
     Uri imageUri;
-    
+
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -64,6 +83,9 @@ public class TakeAnotherPicOrGetHealth extends AppCompatActivity {
         setTheme(R.style.App);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.anotherphoto_layout);
+
+        cameraPermission = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
         //Initializing "Get bee health" button.
         beeHealth = (Button) findViewById(R.id.button_beeHealth);
         //Initializing "Take another Photo" button.
@@ -72,14 +94,15 @@ public class TakeAnotherPicOrGetHealth extends AppCompatActivity {
         //Getting image from global variables.
         Globals g = Globals.getInstance();
         byte[] picture = g.getData();
-        Bitmap bmp = BitmapFactory.decodeByteArray(picture, 0, picture.length);
-        imageUri = getImageUri(getApplicationContext(),bmp);
+        bm = BitmapFactory.decodeByteArray(picture, 0, picture.length);
+        imageUri = getImageUri(getApplicationContext(),bm);
         bee.setImageURI(imageUri);
         //When clicking on "Get bee health" button.
         beeHealth.setOnClickListener((View.OnClickListener)(new View.OnClickListener() {
             public final void onClick(View it) {
-                    uploadFile();
-                    downloadFile();
+                Toast.makeText(getApplicationContext(),"Picture is uploading, please wait.....", Toast.LENGTH_LONG).show();
+                uploadAsyncTask uploadImage = new uploadAsyncTask();
+                uploadImage.execute();
                 }
             }));
         //When clicking on "Take another Photo" button.
@@ -99,10 +122,18 @@ public class TakeAnotherPicOrGetHealth extends AppCompatActivity {
             public final void onClick(DialogInterface dialog, int which) {
                 switch(which) {
                     case 0:
-                        chooseImageFromGallery();
+                        if (!checkStoragePermission()) {
+                            requestStoragePermission();
+                        }
+                        else {
+                            chooseImageFromGallery();
+                        }
+
                         break;
                     case 1:
-                        takePhotoFromCamera();
+                            takePhotoFromCamera();
+
+
                 }
 
             }
@@ -123,30 +154,37 @@ public class TakeAnotherPicOrGetHealth extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == this.GALLERY) {
-            if (data != null) {
-                Uri contentURI = data.getData();
+        ByteArrayOutputStream stream;
+        if (resultCode == RESULT_OK) {
+            if (requestCode == this.GALLERY) {
+                if (data != null) {
+                    Uri contentURI = data.getData();
 
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(TakeAnotherPicOrGetHealth.this.getContentResolver(), contentURI);
-                    this.saveImage(bitmap);
-                    //Toast.makeText((getContext()), (CharSequence)"Image Show!", (int) 0).show();
-                    imageUri = getImageUri(getApplicationContext(),bitmap);
-                    bee.setImageURI(imageUri);
+                    try {
+                        bm = MediaStore.Images.Media.getBitmap(TakeAnotherPicOrGetHealth.this.getContentResolver(), contentURI);
+                        this.saveImage(bm);
+                        //Toast.makeText((getContext()), (CharSequence)"Image Show!", (int) 0).show();
+                        imageUri = getImageUri(getApplicationContext(),bm);
+                        bee.setImageURI(imageUri);
 //                    bee.setImageBitmap(bitmap);
-                } catch (IOException var6) {
-                    var6.printStackTrace();
-                    Toast.makeText((TakeAnotherPicOrGetHealth.this), (CharSequence)"Failed", (int) 0).show();
+                    } catch (IOException var6) {
+                        var6.printStackTrace();
+                        Toast.makeText((TakeAnotherPicOrGetHealth.this), (CharSequence)"Failed", (int) 0).show();
+                    }
                 }
+            } else if (requestCode == this.CAMERA) {
+                bm = (Bitmap) data.getExtras().get("data");
+                imageUri = getImageUri(getApplicationContext(),bm);
+                bee.setImageURI(imageUri);
+                this.saveImage(bm);
             }
-        } else if (requestCode == this.CAMERA) {
-
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            imageUri = getImageUri(getApplicationContext(),thumbnail);
-//            bee.setImageBitmap(thumbnail);
-            bee.setImageURI(imageUri);
-            this.saveImage(thumbnail);
         }
+        stream = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        sample = stream.toByteArray();
+        //Saving image in a global variable.
+        Globals g = Globals.getInstance();
+        g.setData(sample);
 
     }
 
@@ -184,116 +222,217 @@ public class TakeAnotherPicOrGetHealth extends AppCompatActivity {
             return "";
         }
     }
-    private void uploadFile() {
-        Toast.makeText(this,"Please wait while we get your bee health condition!", Toast.LENGTH_LONG).show();
-        File sampleFile = new File(getApplicationContext().getFilesDir(), "sample.txt");
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(sampleFile));
-            writer.append("Hello World!");
-            writer.close();
-        }
-        catch(Exception exception) {
-            Log.e("StorageQuickstart", exception.getMessage(), exception);
-        }
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bee);
-        File filesDir = getApplicationContext().getFilesDir();
-        File imageFile = new File(filesDir,"history" + ".png");
 
-        OutputStream os;
-        try {
-            os = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
-            os.flush();
-            os.close();
-        } catch (Exception e) {
-            Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
-        }
-        Amplify.Storage.uploadFile(
-                "myUploadedFile.png",
-                imageFile.getAbsolutePath(),
-                result -> Log.i("StorageQuickStart", "Successfully uploaded: " + result.getKey()),
-                storageFailure -> Log.e("StorageQuickstart", "Upload error.", storageFailure)
-        );
-        try {
-            Log.i("Timer", "Timer activated");
-            //set time in mili
-            Thread.sleep(10000);
-            Log.i("Timer", "Timer activated");
+    private boolean checkStoragePermission() {
+        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
 
-        }catch (Exception e){
-            e.printStackTrace();
+        return result;
+    }
+
+    private void requestStoragePermission() {
+        ActivityCompat.requestPermissions(this,storagePermissions, STORAGE_REQUEST_CODE);
+    }
+
+    private boolean checkCameraPermissions() {
+        boolean result = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
+        boolean result1 = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+
+        return result && result1;
+    }
+
+    private void requestCameraPermission() {
+        ActivityCompat.requestPermissions(this,cameraPermission, CAMERA_REQUEST_CODE);
+    }
+    private class uploadAsyncTask extends AsyncTask<String, Void, String>{
+        @Override
+        protected String doInBackground(String... params) {
+            String output = null;
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.incorrect);
+            File filesDir = getApplicationContext().getFilesDir();
+            File imageFile = new File(filesDir,"history" + ".png");
+            //bm.describeContents();
+
+            try {
+                OutputStream os = new FileOutputStream(imageFile);
+                bm.compress(Bitmap.CompressFormat.PNG, 100, os);
+
+                os.flush();
+                os.close();
+            } catch (Exception e) {
+                Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
+            }
+            Amplify.Storage.uploadFile(
+                    "user_photo.png",
+                    imageFile.getAbsolutePath(),
+                    result -> Log.i("StorageQuickStart", "Successfully uploaded: " + result.getKey()),
+                    storageFailure -> Log.e("StorageQuickstart", "Upload error.", storageFailure)
+            );
+            return output;
+        }
+        @Override
+        protected void onPostExecute(String response) {
+            try {
+                Log.i("Timer", "Timer activated");
+                //set time in mili
+                Thread.sleep(7000);
+                Log.i("Timer", "Timer activated");
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            httpGetBeeOrNotBeeAsyncTask getBeeTask = new httpGetBeeOrNotBeeAsyncTask();
+            getBeeTask.execute();
+
         }
     }
 
-    private void downloadFile() {
-        Amplify.Storage.downloadFile(
-                "result.json",
-                getApplicationContext().getFilesDir() + "/download.json",
-                result -> Log.i("StorageQuickStart", "Successfully downloaded: " + result.getFile().getName()),
-                storageFailure -> Log.e("StorageQuickStart", storageFailure.getMessage(),storageFailure)
-        );
-        String health = null;
-        String description = null;
-        String species = null;
-        File file = new File(getApplicationContext().getFilesDir() + "/download.json");
-        try {
-            Log.i("Timer", "Timer activated");
-            //set time in mili
-            Thread.sleep(5000);
-            Log.i("Timer", "Timer activated");
+    private class httpGetBeeOrNotBeeAsyncTask extends AsyncTask<String, Void, String>{
+        @Override
+        protected String doInBackground(String... params) {
 
-        }catch (Exception e){
-            e.printStackTrace();
+            String beeOrNot = null;
+            String REQUEST_METHOD = "GET";
+            int READ_TIMEOUT = 15000;
+            int CONNECTION_TIMEOUT = 15000;
+            String stringUrl = "https://drhoneeb-bee-filter.herokuapp.com";
+            String result;
+            String inputLine;
+            try {
+                //Create a URL object holding our url
+                URL myUrl = new URL(stringUrl);         //Create a connection
+                HttpURLConnection connection =(HttpURLConnection)
+                        myUrl.openConnection();         //Set methods and timeouts
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+
+                //Connect to our url
+                connection.connect();       //Create a new InputStreamReader
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());         //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();         //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }         //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();         //Set our result equal to our stringBuilder
+                result = stringBuilder.toString();
+
+                result = result.replaceAll("\\\\","");
+                int length = result.length();
+                Log.i("result", result);
+                try {
+                    JSONObject obj = new JSONObject(result);
+                    JSONArray jArray = obj.getJSONArray("response");
+                    JSONObject j = jArray.getJSONObject(0);
+                    beeOrNot = j.getString("bee_or_not");
+                    Log.i("Bee Or Not", beeOrNot);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            catch(IOException e){
+                e.printStackTrace();
+                result = null;
+            }
+            return beeOrNot;
         }
-        /*Scanner input = null;
-        try {
-            input = new Scanner(file);
-            while (input.hasNextLine()) {
-                String i = input.nextLine();
-                Log.i("data", i );
+        @Override
+        protected void onPostExecute(String beeOrNot) {
+
+            System.out.println(beeOrNot);
+            String bee = beeOrNot;
+            if (bee.equals("not bee")) {
+                //Log.i("Code", "working");
+                //Intent intent = new Intent(TakeAnotherPicOrGetHealth.this, NotABeeActivity.class);
+                //startActivity(intent);
+                Toast.makeText(getApplicationContext(),"There is no Bee in the image. Please upload another photo", Toast.LENGTH_LONG).show();
             }
-            input.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
-        try {
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            StringBuilder stringBuilder = new StringBuilder();
-            String line = bufferedReader.readLine();
-            while (line != null){
-                stringBuilder.append(line);
-                line = bufferedReader.readLine();
+            else {
+                //Log.i("Code", "not working");
+                httpGetAsyncTask getResult = new httpGetAsyncTask();
+                getResult.execute();
             }
-            bufferedReader.close();// This responce will have Json Format String
-            String result = stringBuilder.toString();
+
+
+        }
+    }
+    private class httpGetAsyncTask extends AsyncTask<String, Void, String>{
+        @Override
+        protected String doInBackground(String... params) {
+
+            String REQUEST_METHOD = "GET";
+            int READ_TIMEOUT = 15000;
+            int CONNECTION_TIMEOUT = 15000;
+            String stringUrl = "https://drhoneeb.herokuapp.com/test";
+            String result;
+            String inputLine;
+            try {
+                //Create a URL object holding our url
+                URL myUrl = new URL(stringUrl);         //Create a connection
+                HttpURLConnection connection =(HttpURLConnection)
+                        myUrl.openConnection();         //Set methods and timeouts
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+
+                //Connect to our url
+                connection.connect();       //Create a new InputStreamReader
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());         //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();         //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }         //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();         //Set our result equal to our stringBuilder
+                result = stringBuilder.toString();
+
+            }
+            catch(IOException e){
+                e.printStackTrace();
+                result = null;
+            }
+            return result;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            //resultTextView.setText(response);
+            String health = null;
+            String description = null;
+            String species = null;
             result = result.replaceAll("\\\\","");
             int length = result.length();
-            String newString = result.substring(1,length-1);
+            //String newString = result.substring(1,length-1);
             Log.i("result", result);
+            try {
+                JSONObject obj = new JSONObject(result);
+                JSONArray jArray = obj.getJSONArray("response");
+                JSONObject j = jArray.getJSONObject(0);
+                health = j.getString("status");
+                description = j.getString("problem");
+                species = j.getString("species");
+                Log.i("bee health", health);
+                Log.i("bee health description", description);
+                Log.i("bee species", species);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-            JSONObject obj = new JSONObject(newString);
-            JSONArray jArray = obj.getJSONArray("response");
-            JSONObject j = jArray.getJSONObject(0);
-            health = j.getString("status");
-            description = j.getString("problem");
-            species = j.getString("species");
-            Log.i("bee health", health);
-            Log.i("bee health description", description);
-            Log.i("bee species", species);
+            Intent intent_upload = new Intent(TakeAnotherPicOrGetHealth.this, ResultActivity.class);
+            intent_upload.putExtra("bee health condition", health);
+            intent_upload.putExtra("bee health description", description);
+            intent_upload.putExtra("bee species", species);
+            startActivity(intent_upload);
 
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-
-        Intent intent_upload = new Intent(TakeAnotherPicOrGetHealth.this, ResultActivity.class);
-        intent_upload.putExtra("bee health condition", health);
-        intent_upload.putExtra("bee health description", description);
-        intent_upload.putExtra("bee species", species);
-        startActivity(intent_upload);
     }
+
+
+
 }
 

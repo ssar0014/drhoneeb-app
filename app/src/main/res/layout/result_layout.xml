@@ -7,51 +7,98 @@
     android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/addToHistoryBtn"
-        android:layout_width="210dp"
-        android:layout_height="41dp"
-        android:background="@drawable/corners"
-        android:paddingStart="5dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="5dp"
-        android:paddingBottom="5dp"
-        android:text=" Add to Histroy "
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/button_anotherBeeHealth"
-        app:layout_constraintVertical_bias="0.515" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/addToHistoryBtn"
+                    android:layout_width="210dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/corners"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="5dp"
+                    android:text=" Add to Records "
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/buttonFindSolution"
+                    android:layout_width="210dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/corners"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="find a solution"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/button_anotherBeeHealth"
+                    android:layout_width="210dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/corners"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Home"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/text_species"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:gravity="center_horizontal"
+        android:paddingLeft="16dp"
         android:paddingRight="10dp"
         android:text="@string/species"
         android:textColor="@android:color/black"
-        android:textSize="20dp"
+        android:textSize="18sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/text_suggestion"
-        app:layout_constraintStart_toEndOf="@+id/text_suggestion"
-        app:layout_constraintTop_toTopOf="@+id/text_suggestion"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/text_suggestion" />
 
     <TextView
         android:id="@+id/text_suggestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:text="@string/bee_species"
         android:textColor="@android:color/black"
-        android:textSize="20dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_healthCondition." />
+
 
     <TextView
         android:id="@+id/text_problem"
@@ -61,141 +108,54 @@
         android:paddingLeft="16dp"
         android:text="@string/your_bee_health_is_obsolutely_fine"
         android:textColor="@android:color/black"
-        android:textSize="20dp"
+        android:textSize="18sp"
         android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/text_description" />
+        app:layout_constraintTop_toBottomOf="@+id/text_description"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:text="@string/descriptions"
+        android:text="Problems:"
         android:textAlignment="textStart"
         android:textColor="@android:color/black"
-        android:textSize="20dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/text_species"
         tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/editText_healthCondition."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:gravity="center_horizontal"
+        android:paddingLeft="16dp"
         android:text="@string/healthy"
         android:textColor="@android:color/black"
-        android:textSize="20dp"
+        android:textSize="18sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/text_healthCondition"
-        app:layout_constraintStart_toEndOf="@+id/text_healthCondition"
-        app:layout_constraintTop_toTopOf="@+id/text_healthCondition"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/text_healthCondition" />
 
     <TextView
         android:id="@+id/text_healthCondition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
-        android:text="@string/health_condition"
+        android:text="Health Status："
         android:textAlignment="textStart"
         android:textColor="@android:color/black"
-        android:textSize="20dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         tools:ignore="RtlCompat" />
-
-    <ImageView
-        android:id="@+id/image_bee"
-        android:layout_width="380dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:src="@drawable/bee"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_problem" />
-
-    <View
-        android:id="@+id/view4"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_healthCondition" />
-
-    <Button
-        android:id="@+id/button_anotherBeeHealth"
-        android:layout_width="210dp"
-        android:layout_height="41dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="72dp"
-        android:background="@drawable/corners"
-        android:paddingStart="5dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="5dp"
-        android:paddingBottom="5dp"
-        android:text="@string/get_health_for_another_bee"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/guideline9" />
-
-    <Button
-        android:id="@+id/buttonFindSolution"
-        android:layout_width="210dp"
-        android:layout_height="41dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/corners"
-        android:paddingStart="5dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="5dp"
-        android:paddingBottom="5dp"
-        android:text="find a solution"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_anotherBeeHealth"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="@+id/guideline9" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -213,15 +173,67 @@
 
     <Button
         android:id="@+id/see_moreBtn"
-        android:layout_width="59dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="58dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:background="@drawable/corners2"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:text="more"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="See More"
+        android:textAllCaps="false"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintBottom_toBottomOf="@+id/text_species"
+        app:layout_constraintStart_toEndOf="@+id/text_species"
+        app:layout_constraintTop_toTopOf="@+id/text_species"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline16">
+
+        <ImageView
+            android:id="@+id/image_bee"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:src="@drawable/beetest"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

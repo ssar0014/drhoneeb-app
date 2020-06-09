@@ -8,6 +8,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,12 @@ import com.example.myapplication.R;
 
 import org.w3c.dom.Text;
 
+import java.util.regex.Pattern;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class editInfoFragment extends Fragment {
+public class   editInfoFragment extends Fragment {
 
 
 
@@ -48,12 +51,19 @@ public class editInfoFragment extends Fragment {
             public void onClick(View v) {
                 EditText editText = getView().findViewById(R.id.editText_userName);
                 String string = editText.getText().toString();
-                if (TextUtils.isEmpty(string)) {
-                    Toast.makeText(getActivity(),"Please Input User Name!",Toast.LENGTH_SHORT).show();
+                EditText editText1 = getView().findViewById(R.id.editText_email);
+                String string2 = editText1.getText().toString();
+                if (TextUtils.isEmpty(string) || TextUtils.isEmpty(string2)) {
+                    Toast.makeText(getActivity(),"Please Input User Name and Email!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!validateEmailAddress(string2)) {
+                    Toast.makeText(getActivity(),"Email format is wrong",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Bundle bundle = new Bundle();
-                bundle.putString("user_name",string);
+                bundle.putString("user_name", string);
+                bundle.putString("user_email", string2);
                 NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.action_editInfoFragment_to_settingPageFragment,bundle);
             }
@@ -66,6 +76,10 @@ public class editInfoFragment extends Fragment {
                 navController.navigate(R.id.action_editInfoFragment_to_settingPageFragment);
             }
         });
+    }
+
+    private boolean validateEmailAddress(String email) {
+        return !email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
 

@@ -24,6 +24,7 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -37,22 +38,30 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
+                    android:drawablePadding="10dp"
                     android:id="@+id/textView16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1. Trap mites in drone brood"
-                    android:paddingTop="3dp"
-                    android:paddingLeft="10dp"
-                    android:paddingBottom="3dp"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
                     android:paddingStart="10dp"
-                    tools:ignore="RtlSymmetry"
-                    android:textSize="16sp"/>
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Trap mites in drone brood"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
 
                 <TextView
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/textView17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2. Use screen floors"
+                    android:text="Use screen floors"
                     android:paddingTop="3dp"
                     android:paddingLeft="10dp"
                     android:paddingBottom="3dp"
@@ -61,10 +70,14 @@
                     android:textSize="16sp"/>
 
                 <TextView
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/textView18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3. Use Mite-Resistant Bee Stock"
+                    android:text=" Use Mite-Resistant Bee Stock"
                     android:paddingTop="3dp"
                     android:paddingLeft="10dp"
                     android:paddingBottom="3dp"
@@ -73,6 +86,7 @@
                     android:textSize="16sp"/>
 
                 <TextView
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/textView19"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,10 +100,14 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/textView20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1.  Apistan"
+                    android:text="Apistan"
                     android:paddingTop="3dp"
                     android:paddingLeft="10dp"
                     android:paddingBottom="3dp"
@@ -98,10 +116,14 @@
                     android:textSize="16sp"/>
 
                 <TextView
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/textView21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2. CheckMite+"
+                    android:text="CheckMite+"
                     android:paddingTop="3dp"
                     android:paddingLeft="10dp"
                     android:paddingBottom="3dp"
@@ -110,10 +132,14 @@
                     android:textSize="16sp"/>
 
                 <TextView
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/textView22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3. Apiguard"
+                    android:text="Apiguard"
                     android:paddingTop="3dp"
                     android:paddingLeft="10dp"
                     android:paddingBottom="3dp"
@@ -122,6 +148,7 @@
                     android:textSize="16sp"/>
 
                 <TextView
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/textView23"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -136,30 +163,36 @@
 
                 <TextView
                     android:id="@+id/website2Tv"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/underline"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:drawablePadding="10dp"
                     android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
-                    android:text="http://extension.msstate.edu/publications/https://www.dummies.com/home-garden/hobby-farming/beekeeping/how-to-control-a-varroa-mite-problem-in-your-beehive/"
-                    android:textColor="#FF3F51B5"
+                    android:text="How to control a varroa mite problem in your beehive"
+                    android:textColor="@color/colorBlack"
                     android:textSize="16sp"
+                    android:textStyle="italic"
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
                     android:id="@+id/website1Tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:background="@drawable/underline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:drawablePadding="10dp"
                     android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
-                    android:text="http://extension.msstate.edu/publications/managing-varroa-mites-honey-bee-colonies"
-                    android:textColor="#FF3F51B5"
+                    android:text="Managing varroa mites hoeny bee colonies"
+                    android:textColor="@color/colorBlack"
                     android:textSize="16sp"
+                    android:textStyle="italic"
                     tools:ignore="RtlSymmetry" />
             </LinearLayout>
         </ScrollView>
@@ -189,8 +222,20 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="Varroa Mite Infestation"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="（Source from Wikipedia）"
+            android:textColor="@color/colorBlack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />

@@ -14,27 +14,25 @@
             android:id="@+id/editText_userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="220dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/input_user_name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
         <EditText
             android:id="@+id/editText_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:ems="10"
             android:hint="@string/input_user_email"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_userName"
-            app:layout_constraintVertical_bias="0.108" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_userName" />
 
         <Button
             android:id="@+id/button_edit_submit"
@@ -42,22 +40,37 @@
             android:layout_height="wrap_content"
             android:background="@drawable/corners"
             android:text="Submit"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button_edit_back"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_email" />
+            app:layout_constraintTop_toTopOf="@+id/guideline20"
+            app:layout_constraintVertical_bias="0.887" />
 
         <Button
             android:id="@+id/button_edit_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="92dp"
             android:background="@drawable/corners"
             android:text="back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_edit_submit"
-            app:layout_constraintVertical_bias="0.217" />
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

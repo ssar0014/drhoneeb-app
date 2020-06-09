@@ -6,4 +6,220 @@
     android:layout_height="match_parent"
     tools:context=".Solutions.AntSolutionActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:drawablePadding="10dp"
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Keep your hives off the ground"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:drawablePadding="10dp"
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Make observation for ants routine"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:drawablePadding="10dp"
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Keep the area around your hive free of tall weeds"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:drawablePadding="10dp"
+                    android:id="@+id/textView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Know your ant season and about the ant species living near you"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:drawablePadding="10dp"
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="CheckMite+"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:drawablePadding="10dp"
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Apiguard"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:textColor="@color/colorBlack"
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"
+                    android:text="More info can be seen in the following link: "
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/website2Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Ants in your bee hive? Here is how you can help your colony"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/website1Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_brightness_1_black_12dp"
+                    android:drawableLeft="@drawable/ic_brightness_1_black_12dp"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="How to protect your bees from ants"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="228dp"
+            android:layout_height="177dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.344"
+            app:srcCompat="@drawable/antinfestation" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Ant Infestation"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="（Source from HoneyBeeSuite）"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

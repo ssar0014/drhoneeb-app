@@ -1,7 +1,9 @@
 package com.example.myapplication.ui.camera;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
@@ -17,6 +19,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import android.app.AlertDialog.Builder;
@@ -48,9 +52,10 @@ public class cameraFragment extends Fragment {
     private int selectFile;
     private final int GALLERY = 1;
     private final int CAMERA = 2;
+    private static final int STORAGE_REQUEST_CODE = 101;
     private static final String IMAGE_DIRECTORY = "/image";
     byte[] sample = null;
-    private Uri imageUri;
+    private String[] storagePermissions;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -58,10 +63,14 @@ public class cameraFragment extends Fragment {
         cameraViewModel = ViewModelProviders.of(this).get(cameraViewModel.class);
         View root = inflater.inflate(R.layout.fragment_camera, container, false);
         //Initializing "Take A Photo" button.
+        storagePermissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
         takePic = (Button) root.findViewById(R.id.button_takePic);
         //When clicking on "Take A Photo" button.
         takePic.setOnClickListener((OnClickListener)(new OnClickListener() {
             public final void onClick(View it) {
+                if (!checkStoragePermission()) {
+                    requestStoragePermission();
+                }
                 showPictureDialog();
             }
         }));
@@ -104,41 +113,38 @@ public class cameraFragment extends Fragment {
         byte[] byteArray;
         ByteArrayOutputStream stream;
         Bitmap bitmap = null;
-        //If user choose gallery option.
-        if (requestCode == this.GALLERY) {
+        if (resultCode == getActivity().RESULT_OK) {
+            if (requestCode == GALLERY) {
+                if (data != null) {
+                    Uri contentURI = data.getData();
 
-            if (data != null) {
-                Uri contentURI = data.getData();
-
-                try {
-                    //Saving image from gallery.
-                    bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), contentURI);
-                    this.saveImage(bitmap);
-                } catch (IOException var6) {
-                    var6.printStackTrace();
-                    Toast.makeText((getContext()), (CharSequence)"Failed", (int) 0).show();
+                    try {
+                        //Saving image from gallery.
+                        bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), contentURI);
+                        this.saveImage(bitmap);
+                    } catch (IOException var6) {
+                        var6.printStackTrace();
+                        Toast.makeText((getContext()), (CharSequence)"Failed", (int) 0).show();
+                    }
                 }
+            } else if (requestCode == this.CAMERA) {
+
+                bitmap = (Bitmap) data.getExtras().get("data");
+                this.saveImage(bitmap);
+                //Toast.makeText((getContext()), (CharSequence)"Photo Show!",  (int) 0).show();
+
             }
+            //Saving image as bytestream.
+            stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            sample = stream.toByteArray();
+            //Saving image in a global variable.
+            Globals g = Globals.getInstance();
+            g.setData(sample);
+            //Calling TakeAnotherPicOrGetHealth class.
+            Intent askUserToTakeAnotherPicIntent = new Intent(getContext(), TakeAnotherPicOrGetHealth.class);
+            startActivity(askUserToTakeAnotherPicIntent);
         }
-        //If users choose camera.
-        else if (requestCode == this.CAMERA) {
-
-            bitmap = (Bitmap) data.getExtras().get("data");
-            this.saveImage(bitmap);
-            //Toast.makeText((getContext()), (CharSequence)"Photo Show!",  (int) 0).show();
-
-        }
-        //Saving image as bytestream.
-        stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        sample = stream.toByteArray();
-        //Saving image in a global variable.
-        Globals g = Globals.getInstance();
-        g.setData(sample);
-        //Calling TakeAnotherPicOrGetHealth class.
-        Intent askUserToTakeAnotherPicIntent = new Intent(getContext(), TakeAnotherPicOrGetHealth.class);
-        startActivity(askUserToTakeAnotherPicIntent);
-        
     }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
@@ -176,7 +182,15 @@ public class cameraFragment extends Fragment {
         }
     }
 
+    private boolean checkStoragePermission() {
+        boolean result = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
 
+        return result;
+    }
+
+    private void requestStoragePermission() {
+        ActivityCompat.requestPermissions(getActivity(),storagePermissions, STORAGE_REQUEST_CODE);
+    }
 }
 
 

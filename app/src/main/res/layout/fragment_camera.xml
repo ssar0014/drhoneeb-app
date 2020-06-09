@@ -1,52 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".ui.camera.cameraFragment">
-
-    <ImageView
-        android:id="@+id/picture"
-        android:layout_marginTop="50dp"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/logo"/>
 
     <TextView
         android:id="@+id/text_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="96dp"
         android:gravity="center_horizontal"
         android:paddingStart="16dp"
-        android:textColor="@android:color/black"
-        android:textSize="30dp"
-        android:layout_gravity="center"
         android:text="@string/dr_honeeb"
-        android:textStyle="bold"
         android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_takePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="RtlCompat" />
+
     <TextView
         android:id="@+id/text_problem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_gravity="center"
-        android:textSize="20dp"
-        android:text="@string/instantly_identify_your_bee_health"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
         android:paddingLeft="16dp"
+        android:text="@string/instantly_identify_your_bee_health"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
         android:textStyle="italic"
-        android:textColor="@android:color/black" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_description" />
 
     <Button
         android:id="@+id/button_takePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="130dp"
-        android:background="@drawable/corners"
+        android:background="@drawable/corners3"
+        android:drawableStart="@drawable/baseline_add_a_photo_black_24dp"
+        android:drawableLeft="@drawable/baseline_add_a_photo_black_24dp"
         android:gravity="center_horizontal"
         android:paddingStart="15dp"
         android:paddingTop="15dp"
@@ -54,10 +60,26 @@
         android:paddingBottom="15dp"
         android:text="@string/take_a_photo"
         android:textAlignment="center"
-        android:drawableStart="@drawable/baseline_add_a_photo_black_24dp"
+        android:textAllCaps="false"
         android:textSize="20dp"
-        android:drawableLeft="@drawable/baseline_add_a_photo_black_24dp" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
 
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

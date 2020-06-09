@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_camera"
         android:name="com.example.myapplication.ui.camera.cameraFragment"
-        android:label="Camera"
+        android:label="Home"
         tools:layout="@layout/fragment_camera" />
 
     <fragment
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.example.myapplication.ui.history.historyFragment"
-        android:label="History"
+        android:label="Records"
         tools:layout="@layout/fragment_history" />
 
     <fragment
